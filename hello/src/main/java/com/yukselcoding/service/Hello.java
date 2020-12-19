@@ -5,12 +5,16 @@ import com.yukselcoding.exception.NullValueProvidedException;
 public class Hello {
 
 
+    public static String HELLO_WORLD = "Hello, World.";
+    public static String FORMAT = "Hello, %s.";
+    public static String EXCEPTION_MESSAGE = "Null value provided as name parameter.";
+
     /**
      * Simple hello methods, says hi to whole world :)
      * @return "Hello, World." string literal
      */
     public String hello() {
-        return "Hello, World.";
+        return HELLO_WORLD;
     }
 
 
@@ -22,10 +26,10 @@ public class Hello {
     public String hello(String name) throws NullValueProvidedException {
         try {
             if(name.equals(""))
-                return "Hello, World.";
-            return String.format("Hello, %s.", name);
+                return HELLO_WORLD;
+            return String.format(FORMAT, name);
         } catch (NullPointerException e) {
-            throw new NullValueProvidedException("Null value provided as name parameter.");
+            throw new NullValueProvidedException(EXCEPTION_MESSAGE);
         }
     }
 }
