@@ -8,7 +8,22 @@
     <artifactId>hello</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--  Indicates that java code should be compiled with Java 8  -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
+        <!--  JUnit 5 dependency to add some tests -->
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -17,5 +32,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>
