@@ -1,4 +1,4 @@
-package com.yukselcoding;
+package com.yukselcoding.service;
 
 import com.yukselcoding.exception.NullValueProvidedException;
 import com.yukselcoding.service.Hello;
