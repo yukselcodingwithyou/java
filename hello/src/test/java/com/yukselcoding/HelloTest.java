@@ -1,5 +1,7 @@
 package com.yukselcoding;
 
+import com.yukselcoding.exception.NullValueProvidedException;
+import com.yukselcoding.service.Hello;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +18,7 @@ class HelloTest {
 
     @Test
     @DisplayName("Should check hello returns correct result against given name.")
-    void testHelloWithNameSuccess() {
+    void testHelloWithNameSuccess() throws NullValueProvidedException {
         String name = "Ali";
         String expected = String.format("Hello, %s.", name);
         final Hello hello = new Hello();
@@ -25,15 +27,16 @@ class HelloTest {
 
     @Test
     @DisplayName("Should check hello returns correct result against empty string.")
-    void testHelloWithEmptyString() {
+    void testHelloWithEmptyString() throws NullValueProvidedException {
         final Hello hello = new Hello();
         assertEquals("Hello, World.", hello.hello(""));
     }
 
     @Test
-    @DisplayName("Should check hello throws NullPointerException against null value.")
+    @DisplayName("Should check hello throws NullValueProvidedException against null value.")
     void testHelloWithNullValue() {
         final Hello hello = new Hello();
-        assertThrows(NullPointerException.class, () -> hello.hello(null));
+        NullValueProvidedException exception = assertThrows(NullValueProvidedException.class, () -> hello.hello(null));
+        assertEquals(exception.getMessage(), "Null value provided as name parameter.");
     }
 }
